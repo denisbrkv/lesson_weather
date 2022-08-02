@@ -15,22 +15,99 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.blue[200],
             title: const Text(
-              'Weather Forecasr',
+              'Weather Forecast',
               style: TextStyle(color: Colors.black),
             ),
             centerTitle: true,
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                _EnterCityName(),
-                _CityDetail(),
-                SizedBox(height: 20.0),
-                _TemperatureDetail(),
-              ],
-            ),
+          body: Column(
+            children: [
+              _EnterCityName(),
+              _CityDetail(),
+              SizedBox(height: 20.0),
+              _TemperatureDetail(),
+              SizedBox(height: 30.0),
+              _WeatherDetail(),
+              SizedBox(height: 40.0),
+              Text(
+                '7-DAY WEATHER FORECAST',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
           ),
         ));
+  }
+}
+
+class _WeatherDetail extends StatelessWidget {
+  const _WeatherDetail({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Icon(
+              Icons.sunny,
+              size: 40,
+            ),
+            SizedBox(height: 8),
+            Text(
+              '3',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'm/s',
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(
+              Icons.wb_cloudy,
+              size: 40,
+            ),
+            SizedBox(height: 8),
+            Text(
+              '4',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'm/s',
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(
+              Icons.water_drop,
+              size: 40,
+            ),
+            SizedBox(height: 8),
+            Text(
+              '2',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'm/s',
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
 
@@ -77,7 +154,7 @@ class _CityDetail extends StatelessWidget {
         ),
         SizedBox(height: 10.0),
         Text(
-          'Friday, Aug 01, 2022',
+          'Mondey, Aug 01, 2022',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
         ),
       ],
