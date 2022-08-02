@@ -20,27 +20,65 @@ class MyApp extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: Column(
-            children: [
-              _EnterCityName(),
-              _CityDetail(),
-              SizedBox(height: 20.0),
-              _TemperatureDetail(),
-              SizedBox(height: 30.0),
-              _WeatherDetail(),
-              SizedBox(height: 40.0),
-              Text(
-                '7-DAY WEATHER FORECAST',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                _EnterCityName(),
+                _CityDetail(),
+                const SizedBox(height: 20.0),
+                _TemperatureDetail(),
+                const SizedBox(height: 30.0),
+                _WeatherDetail(),
+                const SizedBox(height: 40.0),
+                const Text(
+                  '7-DAY WEATHER FORECAST',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20.0),
+                Container(
+                  height: 140,
+                  child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => Card(),
+                  ),
+                ),
+              ],
+            ),
           ),
         ));
   }
 }
+
+Widget Card() => Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: Colors.blue[200]),
+      width: 160,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const Text(
+            'Friday',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('20 °C',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w300)),
+              Icon(
+                Icons.sunny,
+                size: 40,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
 
 class _WeatherDetail extends StatelessWidget {
   const _WeatherDetail({
